@@ -8,6 +8,7 @@ let engine;
 let world;
 var ball;
 var ball2;
+var wall;
 
 var ground
 
@@ -21,22 +22,30 @@ function setup()
     restitution: 1.5
   }
 
-  ball = Bodies.circle (100,10,20, ball_options);
-  World.add (world, ball);
 
   var ball2_options = {
     restitution:1
   }
   
-  ball2 = Bodies.circle (150, 10, 20, ball2_options);
-  World.add (world, ball2);
-
   var ground_options = {
     isStatic:true
   }
+
+  ball = Bodies.circle (100,10,20, ball_options);
+  World.add (world, ball);
+
   
-ground = Bodies.rectangle (0, 390, 400, 20, ground_options);
+  ball2 = Bodies.circle (250, 10, 20, ball2_options);
+  World.add (world, ball2);
+
+  
+ground = Bodies.rectangle (200, 390, 400, 20, ground_options);
 World.add (world, ground)
+wall = Bodies.rectangle (250, 200, 200, 20, ground_options);
+World.add (world, wall)
+
+rectMode (CENTER);
+ellipseMode (RADIUS)
 
 }
 
@@ -47,5 +56,6 @@ function draw()
   ellipse (ball.position.x, ball.position.y, 20)
   rect (ground.position.x, ground.position.y, 400, 20)
   ellipse (ball2.position.x, ball2.position.y, 20)
+  rect (wall.position.x, wall.position.y, 200, 20)
 }
 
